@@ -112,7 +112,7 @@ func (s *server) closeNotify(l net.Listener) {
 		syscall.SIGTERM,
 		syscall.SIGKILL,
 		syscall.SIGQUIT,
-		syscall.SIGUSR2,
+		//syscall.SIGUSR2,
 		syscall.SIGINT,
 	)
 	sign := <-sig
@@ -123,7 +123,7 @@ func (s *server) closeNotify(l net.Listener) {
 	case syscall.SIGKILL:
 		l.Close()
 		s.fquit <- struct{}{}
-	case syscall.SIGUSR2:
+		//case syscall.SIGUSR2:
 		panic("USR2 => not implemented")
 	}
 }
